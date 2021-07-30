@@ -18,7 +18,11 @@ class LoginScreenState
 
   @override
   Widget buildBody() {
-    return Text("LOGIN", style: getWhite16(),);
+    return Center(
+        child: Text(
+      "LOGIN",
+      style: getWhite16(),
+    ));
   }
 
   @override
