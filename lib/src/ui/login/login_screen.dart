@@ -20,7 +20,7 @@ class LoginScreenState
   Widget buildBody() {
     return Center(
         child: Text(
-      "LOGIN",
+      "LOGIN DEV",
       style: getWhite16(),
     ));
   }
