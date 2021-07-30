@@ -18,6 +18,7 @@ class SplashScreenState
     with SingleTickerProviderStateMixin {
   @override
   SplashController getController() => SplashController();
+
   AnimationController? animationController;
   late Animation<double> animation;
 
