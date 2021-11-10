@@ -52,9 +52,8 @@ class SplashScreenState
                       padding: const EdgeInsets.symmetric(horizontal: 100),
                       child: ScaleTransition(
                           scale: animation,
-                          child: FlutterLogo(
-                            size: 256,
-                          ))),
+                          child: FlutterLogo(size: 256,)
+                      )),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),

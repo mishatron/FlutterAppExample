@@ -38,6 +38,15 @@ dependencies:
   url_launcher: ^6.0.4
   flutter_statusbarcolor_ns: ^0.3.0-nullsafety
 
+#  firebase_core: ^1.4.0
+#  firebase_auth: ^3.0.1
+  firebase_core: ^1.1.1
+  firebase_auth: ^1.1.4
+#  firebase_core: ^0.7.0
+#  firebase_auth: ^0.20.1
+  shared_preferences: ^2.0.0
+  cloud_firestore: ^3.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
