@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app_example/resources/colors.dart';
 import 'package:flutter_app_example/resources/icon_button.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_app_example/src/ui/main/main_controller.dart';
 import 'package:flutter_app_example/src/ui/profile/profile_screen.dart';
 import 'package:get/get.dart';
 
-
 class MainScreen extends BaseStatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -19,7 +17,6 @@ class MainScreen extends BaseStatefulWidget {
 }
 
 class MainScreenState extends BaseStatefulScreen<MainScreen, MainController> {
-
   @override
   MainController getController() => MainController();
 
@@ -37,8 +34,13 @@ class MainScreenState extends BaseStatefulScreen<MainScreen, MainController> {
         appBar: buildAppbar(),
         body: pageList[pageIndex],
         floatingActionButton: FloatingActionButton(
-          onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => AdditionScreen()),);},
-          child: Icon(Icons.add, color: Colors.black,),
+          onPressed: () {
+            Get.to(AdditionScreen());
+          },
+          child: Icon(
+            Icons.add,
+            color: Colors.black,
+          ),
           elevation: 5.0,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -55,26 +57,32 @@ class MainScreenState extends BaseStatefulScreen<MainScreen, MainController> {
                   Padding(
                     padding: const EdgeInsets.only(left: 40.0),
                     child: IconTextButton(
-                      icon: Icon(Icons.home, color: pageIndex == 0 ? colorAccent : Colors.black),
+                      icon: Icon(Icons.home,
+                          color: pageIndex == 0 ? colorAccent : Colors.black),
                       label: "Home",
-                      labelStyle: TextStyle(color: pageIndex == 0 ? colorAccent : Colors.black),
-                      onTap: () {_onItemTapped(0);},
+                      labelStyle: TextStyle(
+                          color: pageIndex == 0 ? colorAccent : Colors.black),
+                      onTap: () {
+                        _onItemTapped(0);
+                      },
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 40.0),
                     child: IconTextButton(
-                      icon: Icon(Icons.account_box_outlined, color: pageIndex == 1 ? colorAccent : Colors.black),
+                      icon: Icon(Icons.account_box_outlined,
+                          color: pageIndex == 1 ? colorAccent : Colors.black),
                       label: "Profile",
-                      labelStyle: TextStyle(color: pageIndex == 1 ? colorAccent : Colors.black),
-                      onTap: () {_onItemTapped(1);},
+                      labelStyle: TextStyle(
+                          color: pageIndex == 1 ? colorAccent : Colors.black),
+                      onTap: () {
+                        _onItemTapped(1);
+                      },
                     ),
                   ),
                 ],
               ),
-            )
-        )
-    );
+            )));
   }
 
   @override
@@ -87,7 +95,6 @@ class MainScreenState extends BaseStatefulScreen<MainScreen, MainController> {
     HomeScreen(),
     ProfileScreen(),
   ];
-
 }
 
 
@@ -104,10 +111,7 @@ class MainScreenState extends BaseStatefulScreen<MainScreen, MainController> {
 //     },);
 // }
 
-
-
-
-///// --- Variant 2 ------
+/// --- Variant 2 ------
 
 // import 'package:flutter/material.dart';
 // import 'package:flutter_app_example/resources/colors.dart';
@@ -198,13 +202,7 @@ class MainScreenState extends BaseStatefulScreen<MainScreen, MainController> {
 
 /////// =================
 
-
-
-
-
-
-
-// ----- variant 3 -------
+/// ----- variant 3 -------
 
 // import 'package:flutter/material.dart';
 // import 'package:flutter_app_example/resources/colors.dart';
@@ -345,6 +343,3 @@ class MainScreenState extends BaseStatefulScreen<MainScreen, MainController> {
 // // BottomNavigationBarItem(icon: const Icon(Icons.account_box_outlined)),
 // // ],
 // // )
-
-
-

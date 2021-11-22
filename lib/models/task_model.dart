@@ -1,15 +1,41 @@
-
-class ListTask {
+class Task {
   String task;
+  String dateTask;
+  String docIndexTask;
+  String id;
 
-  ListTask({
-    required this.task
-  });
+  Task(
+      {required this.task,
+      required this.dateTask,
+      required this.docIndexTask,
+      required this.id});
 
-  factory ListTask.fromJSON(Map<String, dynamic> json){
-    return ListTask(
-      task: json["data"],
-    );
+  factory Task.fromJSON(Map<String, dynamic> json, String id) {
+    return Task(
+        task: json["task"],
+        dateTask: json["dateTask"],
+        docIndexTask: json["userId"],
+        id: id);
   }
-
 }
+
+// class Task {
+//   String task;
+//   String docIndexTask;
+//   String id;
+//
+//   Task({
+//     required this.task,
+//     required this.docIndexTask,
+//     required this.id
+//   });
+//
+//   factory Task.fromJSON(Map<String, dynamic> json, String id){
+//     return Task(
+//         task: json["data"],
+//         docIndexTask: json["userId"],
+//         id: id
+//     );
+//   }
+//
+// }

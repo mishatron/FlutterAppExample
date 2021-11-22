@@ -1,13 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_example/models/list_model.dart';
 import 'package:flutter_app_example/src/core/getX/base_controller.dart';
-import 'package:flutter_app_example/src/data/repositories/auth/auth_repository.dart';
-import 'package:get/get.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AdditionController extends BaseController {
-  final AuthRepository _authRepository = Get.find();
+//  final AuthRepository _authRepository = Get.find();
 
   final TextEditingController _controllerTextTask = TextEditingController();
 
@@ -15,7 +12,19 @@ class AdditionController extends BaseController {
 
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   late CollectionReference collectionReference;
+
   var firebaseUser = FirebaseAuth.instance.currentUser;
+
+//  final HomeController _controller = Get.put(HomeController());
+
+  // void saveDate(String task) async {
+  //   collectionReference = firebaseFirestore.collection("taskData");
+  //   await collectionReference.add({"data": task, "userId": firebaseUser?.uid});
+  //   // Get.to(HomeController(), arguments: {
+  //   //   "replacementTask" : "List"
+  //   // });
+  //   Get.back();
+  // }
 
   void list() async {
     try {
@@ -28,55 +37,16 @@ class AdditionController extends BaseController {
     }
   }
 
-  void saveDate(String task) async {
-    collectionReference = firebaseFirestore.collection("taskData"); //.doc(firebaseUser.uid);
-    await collectionReference.add({"data": task, "userId": firebaseUser?.uid});
-  }
+// void transitTask() {
+//   final DetailController _controller = Get.put(DetailController());
+//   _controller.replacementFlag = "List";
+// }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // @override
 // void onInit(){
 //   super.onInit();
 //   //controllerTextTask = TextEditingController();
 //   collectionReference = firebaseFirestore.collection("taskData");
-// }
-
-// void taskAdd() async {
-//   try {
-//     showProgress();
-//     print('---controller--->>> Firebase' + controllerTextTask.text);
-//     taskList.add(ListTask(task: controllerTextTask.text));
-//     hideProgress();
-//   } catch (err) {
-//     handleError(err);
-//   }
 // }
