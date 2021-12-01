@@ -53,10 +53,10 @@ InputDecoration getDecoration(
     String hintText, String helperText, String labelText, String prefixText, IconData iconData) {
 
   return InputDecoration(
-      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: colorAccent)),
-      border: OutlineInputBorder(borderSide: BorderSide(color: colorAccent)),
+      focusedBorder: const OutlineInputBorder(borderSide: const BorderSide(color: colorAccent)),
+      border: const OutlineInputBorder(borderSide: const BorderSide(color: colorAccent)),
       hintText: hintText, // 'input Phone'
-      hintStyle: TextStyle(color: hintStyleTextField),
+      hintStyle: const TextStyle(color: hintStyleTextField),
       helperText: helperText, // '+38...',
       labelText: labelText, // 'Phone',
       labelStyle: const TextStyle(color: colorBlackText),

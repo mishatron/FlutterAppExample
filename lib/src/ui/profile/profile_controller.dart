@@ -69,6 +69,8 @@ class ProfileController extends BaseController {
   final TextEditingController controllerLastName = TextEditingController();
   final TextEditingController controllerEmail = TextEditingController();
 
+  String firstName = "";
+  String lastName = "";
   String email = "";
 
   UserRepository repository = Get.find();
@@ -90,6 +92,12 @@ class ProfileController extends BaseController {
   }
 
   void initListener() {
+    controllerFirstName.addListener(() {
+      _user.value.firstName = controllerFirstName.text.trim();
+    });
+    controllerLastName.addListener(() {
+      _user.value.lastName = controllerLastName.text.trim();
+    });
     controllerEmail.addListener(() {
       _user.value.email = controllerEmail.text.trim();
     });
@@ -105,4 +113,5 @@ class ProfileController extends BaseController {
       handleError(err);
     }
   }
+
 }

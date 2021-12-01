@@ -102,7 +102,7 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
                                 closedElevation: 0.0,
                                 openElevation: 4.0,
                                 transitionDuration:
-                                    Duration(milliseconds: 1500),
+                                    const Duration(milliseconds: 1500),
                                 openBuilder:
                                     (BuildContext context, VoidCallback _) =>
                                         DetailScreen(
@@ -115,6 +115,8 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
                                     leading: Icon(Icons.date_range),
                                     trailing: Icon(Icons.visibility_outlined),
                                     title: Text(list[index].task,
+                                        maxLines: 1,
+                                        softWrap: false,
                                         overflow: TextOverflow.ellipsis),
                                     subtitle: Text(list[index].dateTask),
                                   );
@@ -122,7 +124,7 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
                               ),
                             );
                           },
-                          separatorBuilder: (context, index) => Divider(
+                          separatorBuilder: (context, index) => const Divider(
                                 height: 0.1,
                                 color: Colors.black,
                               ),
@@ -170,4 +172,7 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
     return null;
     // return getAppBar(context, "HomeScreen", leading: getBack());
   }
+
 }
+
+/// ===== разбивка на части ==== OPTION + COMMAND + M

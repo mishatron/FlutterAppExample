@@ -26,11 +26,11 @@ class TaskRepositoryImpl extends TaskRepository {
     var batch = FirebaseFirestore.instance.batch();
     var allTasks = await firestoreTaskData.where("userId", isEqualTo: uid).get();
     for(var value in allTasks.docs){
-      await firestoreTaskData.doc(value.id).delete();
+      batch.delete(firestoreTaskData.doc(value.id));
     }
-    batch.commit();
+    await batch.commit();
   }
 }
-
+/// ===== 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 - token commit
 /// ===== y8AzQ3RtEbdf8guammco7y2nub32 - мой
 /// ===== pOWAWeYV6AcrFFapBdW5U1Yus7R2 - asta

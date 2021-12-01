@@ -265,7 +265,6 @@ class ProfileScreenState
   ProfileController getController() => ProfileController();
 
   var auth = FirebaseAuth.instance;
-  String _name = "";
 
   @override
   Widget buildBody() {
@@ -310,62 +309,15 @@ class ProfileScreenState
                               child: TextField(
                                 cursorColor: colorAccent,
                                 onChanged: (text) {
-                                  _name = text;
+                                  controller.firstName = text;
                                 },
                                 controller: controller.controllerFirstName,
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(99)
-                                ],
+                                inputFormatters: [LengthLimitingTextInputFormatter(99)],
                                 keyboardType: TextInputType.name,
-                                decoration: getDecoration(
-                                    "input FirstName",
-                                    "",
-                                    controller.user.firstName ?? '',
-                                    "",
-                                    Icons.account_box),
-//                          enabled: controller.user.firstName!.isEmpty ? true : false, //controller.controllerFirstName.text.isEmpty ? true : false,
-                              ),
-                            ),
-                            // controller.user.firstName!.isEmpty ? const SizedBox(width: 10.0) : Offstage(),
-                            // controller.user.firstName!.isEmpty ?
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: colorAccent, // background
-                                onPrimary: Colors.black, // foreground
-                              ),
-                              onPressed: () {
-                                // controller.name = _name;
-                                // controller.setName();
-                                // _name.isEmpty ? controller.profile() : print("false");
-                                print("SAVE_save");
-                              },
-                              child: Text("Save"),
-                            ),
-                            // : Offstage(),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 10.0),
-                      Container(
-                        padding: EdgeInsets.only(left: 10, right: 10),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Flexible(
-                              child: TextField(
-                                cursorColor: colorAccent,
-                                onChanged: (text) {},
-                                controller: controller.controllerLastName,
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(9)
-                                ],
-                                keyboardType: TextInputType.name,
-                                decoration: getDecoration(
-                                    "input LastName",
-                                    "",
-                                    controller.user.lastName ?? '',
-                                    "",
-                                    Icons.account_box),
+                                decoration:
+//                                getDecoration("input FirstName", "", controller.user.firstName ?? "", "", Icons.account_box),
+                                getDecoration("input FirstName", "",  controller.user.firstName == "" ? "input FirstName" : controller.user.firstName.toString(), "", Icons.account_box),
+//                          enabled: controller.controllerFirstName.text.isEmpty ? true : false,
                               ),
                             ),
                             const SizedBox(width: 10.0),
@@ -375,10 +327,42 @@ class ProfileScreenState
                                 onPrimary: Colors.black, // foreground
                               ),
                               onPressed: () {
-                                _name.isEmpty
-                                    ? controller.showMessage(
-                                        "incorrect input of the lastName")
-                                    : print("false");
+                                controller.setDataUserParameters();
+                              },
+                              child: Text("Save"),
+                            ),
+                            // : Offstage(),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 10.0),
+                      Container(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Flexible(
+                              child: TextField(
+                                cursorColor: colorAccent,
+                                onChanged: (text) {
+                                  controller.lastName = text;
+                                },
+                                controller: controller.controllerLastName,
+                                inputFormatters: [LengthLimitingTextInputFormatter(25)],
+                                keyboardType: TextInputType.name,
+                                decoration:
+//                                getDecoration("input LastName", "", controller.user.lastName ?? "input lastName", "", Icons.account_box),
+                                getDecoration("input LastName", "", controller.user.lastName == "" ? "input LastName" : controller.user.lastName.toString(), "", Icons.account_box),
+                              ),
+                            ),
+                            const SizedBox(width: 10.0),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: colorAccent, // background
+                                onPrimary: Colors.black, // foreground
+                              ),
+                              onPressed: () {
+                                controller.setDataUserParameters();
                               },
                               child: Text("Save"),
                             ),
@@ -389,8 +373,6 @@ class ProfileScreenState
                       Container(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Row(
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Flexible(
                               child: TextField(
@@ -399,12 +381,11 @@ class ProfileScreenState
                                   controller.email = text;
                                 },
                                 controller: controller.controllerEmail,
-                                inputFormatters: [
-                                  LengthLimitingTextInputFormatter(9)
-                                ],
+                                inputFormatters: [LengthLimitingTextInputFormatter(25)],
                                 keyboardType: TextInputType.emailAddress,
                                 decoration:
-                                getDecoration("input Email", "", controller.user.email ?? "input Email", "", Icons.email),
+//                                getDecoration("input Email", "", controller.user.email ?? "input Email", "", Icons.email),
+                                getDecoration("input Email", "",  controller.user.email == "" ? "input Email" : controller.user.email.toString(), "", Icons.email),
                               ),
                             ),
                             const SizedBox(
@@ -417,7 +398,6 @@ class ProfileScreenState
                               ),
                               onPressed: () {
                                 controller.setDataUserParameters();
-//                                controller.setDataUserParameters(id);
                               },
                               child: Text("Save"),
                             ),
