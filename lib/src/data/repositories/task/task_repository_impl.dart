@@ -3,17 +3,13 @@ import 'package:flutter_app_example/models/task_model.dart';
 import 'package:flutter_app_example/src/data/repositories/task/task_repository.dart';
 
 class TaskRepositoryImpl extends TaskRepository {
+
   /// ===== добавление задачи ===
   @override
-  Stream<List<Task>> getTaskList() {
-    var firestoreTaskData = FirebaseFirestore.instance.collection('taskData');
+  Stream<List<Task>> getTaskList(String uid) {
+    var firestoreTaskData = FirebaseFirestore.instance.collection('taskData').where("userId", isEqualTo: uid);
     return firestoreTaskData.snapshots().map((event) {
       return event.docs.map((e) {
-        // for(var i in e.id) {
-        //   if(i == firestoreUserData.id) {
-        //     sortedTaskIndex.add(i);
-        //   }
-        // }
         print(e.id);
         return Task.fromJSON(e.data(), e.id);
       }).toList();
@@ -23,6 +19,17 @@ class TaskRepositoryImpl extends TaskRepository {
   /// ===== удаление задачи ===
   @override
   Future<void> deleteTask(Task item) => firestoreTaskData.doc(item.id).delete();
+
+  /// ===== удаление всего списка ==
+  @override
+  Future<void> deleteListTask() async {
+    var batch = FirebaseFirestore.instance.batch();
+    var allTasks = await firestoreTaskData.where("userId", isEqualTo: uid).get();
+    for(var value in allTasks.docs){
+      await firestoreTaskData.doc(value.id).delete();
+    }
+    batch.commit();
+  }
 }
 
 /// ===== y8AzQ3RtEbdf8guammco7y2nub32 - мой

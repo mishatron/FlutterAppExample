@@ -51,6 +51,7 @@ TextStyle getBlack22() {
 
 InputDecoration getDecoration(
     String hintText, String helperText, String labelText, String prefixText, IconData iconData) {
+
   return InputDecoration(
       focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: colorAccent)),
       border: OutlineInputBorder(borderSide: BorderSide(color: colorAccent)),

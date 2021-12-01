@@ -25,10 +25,8 @@ class AppPages {
     GetPage(name: AdditionScreenRoute,
       page: () => AdditionScreen()),
     GetPage(name: DetailScreenRoute,
-//      page: () => DetailScreen(taskTransit: "", dateTask: "",)
-        /// OpenContainer variant_2
-      page: () => DetailScreen()
-        ),
+      page: () => DetailScreen(taskTransit: "", dateTask: "",)
+    ),
   ];
   static final unknownRoutePage =
       GetPage(name: rootRoute, page: () => SplashScreen());

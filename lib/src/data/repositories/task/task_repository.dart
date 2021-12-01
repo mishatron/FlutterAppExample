@@ -5,8 +5,11 @@ abstract class TaskRepository extends BaseRepository {
 //  static TaskRepository get to => Get.find();
 
   /// ===== добавление задачи ===
-  Stream<List<Task>> getTaskList();
+  Stream<List<Task>> getTaskList(String uid);
 
   /// ===== удаление задачи ===
   Future<void> deleteTask(Task item);
+
+  /// ===== удаление всего списка ====
+  Future<void> deleteListTask();
 }

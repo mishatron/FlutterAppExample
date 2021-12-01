@@ -269,8 +269,6 @@ class ProfileScreenState
 
   @override
   Widget buildBody() {
-    //   controller.setName();
-
     return controller.contentProgress
         ? const Offstage()
         : ListView(
@@ -405,23 +403,8 @@ class ProfileScreenState
                                   LengthLimitingTextInputFormatter(9)
                                 ],
                                 keyboardType: TextInputType.emailAddress,
-                                decoration: getDecoration(
-                                    "input Email",
-                                    "",
-                                    controller.user.email ?? '',
-                                    "",
-                                    Icons.email),
-//                           decoration:
-//                           InputDecoration(
-//                             focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: colorAccent)),
-//                             border: OutlineInputBorder(borderSide: BorderSide(color: colorAccent)),
-//                             hintText: ' input FirstName',
-//                             hintStyle: TextStyle(color: Colors.black12),
-//                             helperStyle: TextStyle(color: colorAccent),
-//                             labelText: controller.user.email,
-//                             labelStyle: TextStyle(color: Colors.black),
-//                             prefixIcon: const Icon(Icons.account_box, color: colorAccent),
-//                            ),
+                                decoration:
+                                getDecoration("input Email", "", controller.user.email ?? "input Email", "", Icons.email),
                               ),
                             ),
                             const SizedBox(
@@ -433,10 +416,8 @@ class ProfileScreenState
                                 onPrimary: Colors.black, // foreground
                               ),
                               onPressed: () {
-                                ///                          controller.setDataUserParameters(id);
-                                // print(testText);
-                                // controller.profile();
-                                // controller.controllerFirstName.text != "" ? controller.profile() : print("------ email");
+                                controller.setDataUserParameters();
+//                                controller.setDataUserParameters(id);
                               },
                               child: Text("Save"),
                             ),
@@ -444,35 +425,25 @@ class ProfileScreenState
                         ),
                       ),
                       const SizedBox(height: 10.0),
-                      // Align(
-                      //   alignment: Alignment(0.0, 0.0),
-                      //   heightFactor: 1.5,
-                      //   child: FloatingActionButton.extended(
-                      //     onPressed: () {
-                      //       print("uuuuuuuuuuuuu");
-                      //     },
-                      //     label: Text("Login",
-                      //         style: TextStyle(fontSize: 22.0, color: Colors.black)),
-                      //     icon: const Icon(
-                      //       Icons.logout,
-                      //       color: Colors.black,
-                      //     ),
-                      //   ),
-                      // ),
+                      Container(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                        child: ElevatedButton.icon(
+                          onPressed: (){
+                            _showDialog();
+                          },
+                          label: Text("Logout"),
+                          icon: Icon(Icons.logout),
+                          style: ElevatedButton.styleFrom(
+                            primary: colorAccent,
+                            onPrimary: Colors.black,
+                            minimumSize: Size.fromHeight(60),
+                          ),
+                        )
+                      ),
                     ],
                   ),
                 ),
               ]);
-  }
-
-  @override
-  Widget? buildFab() {
-    return FloatingActionButton(
-        child: const Icon(
-          Icons.logout,
-          color: Colors.black,
-        ),
-        onPressed: controller.logout);
   }
 
   @override
@@ -485,4 +456,45 @@ class ProfileScreenState
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove("stringValue");
   }
+
+  void _showDialog() {
+    Get.dialog(AlertDialog(
+      backgroundColor: colorPrimaryDark,
+      title: new Text("Logout"),
+      content: new Text("are you sure you want to exit the application?"),
+      actions: <Widget>[
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: colorAccent, // background
+            onPrimary: Colors.black, // foreground
+          ),
+          onPressed: () {
+            Get.back();
+          },
+          child: Text("Close"), // cancel, //
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: colorAccent, // background
+            onPrimary: Colors.black, // foreground
+          ),
+          onPressed: () {
+            controller.logout();
+          },
+          child: Text("ok"), // cancel, //
+        ),
+      ],
+    ));
+  }
+
+  // @override
+  // Widget? buildFab() {
+  //   return FloatingActionButton(
+  //       child: const Icon(
+  //         Icons.logout,
+  //         color: Colors.black,
+  //       ),
+  //       onPressed: controller.logout);
+  // }
+
 }

@@ -13,15 +13,11 @@ class TaskAddDateController extends BaseController {
 
   var firebaseUser = FirebaseAuth.instance.currentUser;
 
-  //  final HomeController _controller = Get.put(HomeController());
-
   void saveDate(String task, String dateTask) async {
     collectionReference = firebaseFirestore.collection("taskData");
     await collectionReference
         .add({"task": task, "dateTask": dateTask, "userId": firebaseUser?.uid});
-    // Get.to(HomeController(), arguments: {
-    //   "replacementTask" : "List"
-    // });
+    Get.back();
     Get.back();
   }
 }

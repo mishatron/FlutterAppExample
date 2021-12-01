@@ -82,12 +82,12 @@ class ProfileController extends BaseController {
     initListener();
     super.onInit();
   }
-  //
-  // void setDataUserParameters() async {
-  //   showProgress();
-  //   await repository.updateUser(user);
-  //   hideProgress();
-  // }
+
+  void setDataUserParameters() async {
+    showProgress();
+    await repository.updateUser(user);
+    hideProgress();
+  }
 
   void initListener() {
     controllerEmail.addListener(() {

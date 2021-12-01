@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_example/src/core/getX/base_controller.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class AdditionController extends BaseController {
-//  final AuthRepository _authRepository = Get.find();
 
   final TextEditingController _controllerTextTask = TextEditingController();
 
@@ -15,38 +16,15 @@ class AdditionController extends BaseController {
 
   var firebaseUser = FirebaseAuth.instance.currentUser;
 
-//  final HomeController _controller = Get.put(HomeController());
+  var now = DateTime.now();
+  var formatter = DateFormat('dd.MM.yyyy');
 
-  // void saveDate(String task) async {
-  //   collectionReference = firebaseFirestore.collection("taskData");
-  //   await collectionReference.add({"data": task, "userId": firebaseUser?.uid});
-  //   // Get.to(HomeController(), arguments: {
-  //   //   "replacementTask" : "List"
-  //   // });
-  //   Get.back();
-  // }
-
-  void list() async {
-    try {
-      showProgress();
-      // DO LOGIN
-      // await _authRepository.login();
-      hideProgress();
-    } catch (err) {
-      handleError(err);
-    }
+  void saveDate(String task) async {
+    String formattedDate = formatter.format(now);
+    collectionReference = firebaseFirestore.collection("taskData");
+    await collectionReference.add(
+        {"task": task, "dateTask": formattedDate, "userId": firebaseUser?.uid});
+    Get.back();
   }
 
-// void transitTask() {
-//   final DetailController _controller = Get.put(DetailController());
-//   _controller.replacementFlag = "List";
-// }
-
 }
-
-// @override
-// void onInit(){
-//   super.onInit();
-//   //controllerTextTask = TextEditingController();
-//   collectionReference = firebaseFirestore.collection("taskData");
-// }
