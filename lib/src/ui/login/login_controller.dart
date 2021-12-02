@@ -55,13 +55,5 @@ class LoginController extends BaseController {
     hideProgress();
   }
 
-  // void login(String phone) async {
-  //   try {
-  //     showProgress();
-  //     hideProgress();
-  //   } catch (err) {
-  //     handleError(err);
-  //   }
-  // }
 
 }

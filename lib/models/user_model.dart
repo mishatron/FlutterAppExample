@@ -36,31 +36,3 @@ class UserModel {
 
 }
 
-// import 'package:cloud_firestore/cloud_firestore.dart';
-//
-// class UserModel {
-//
-//   String? id;
-//   String? phone;
-//   String? firstName;
-//   String? lastName;
-//   String? email;
-//
-//   UserModel({
-//     this.id,
-//     this.phone,
-//     this.firstName,
-//     this.lastName,
-//     this.email,
-//   });
-//
-//   UserModel.fromDocumentSnapshot(DocumentSnapshot doc) {
-//
-//     id = doc.id;
-//     phone = doc['phone'];
-//     firstName = doc['firstName'];
-//     lastName = doc['lastName'];
-//     email = doc['email'];
-//   }
-//
-// }

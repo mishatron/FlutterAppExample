@@ -1,3 +1,4 @@
+
 class Task {
   String task;
   String dateTask;
@@ -19,23 +20,3 @@ class Task {
   }
 }
 
-// class Task {
-//   String task;
-//   String docIndexTask;
-//   String id;
-//
-//   Task({
-//     required this.task,
-//     required this.docIndexTask,
-//     required this.id
-//   });
-//
-//   factory Task.fromJSON(Map<String, dynamic> json, String id){
-//     return Task(
-//         task: json["data"],
-//         docIndexTask: json["userId"],
-//         id: id
-//     );
-//   }
-//
-// }

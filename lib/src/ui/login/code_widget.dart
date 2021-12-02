@@ -60,7 +60,7 @@ class CodeWidgetState extends BaseSharedControlledState<CodeWidget, LoginControl
                         controller: controller.controllerCode,
                         focusNode: controller.codeFocus,
                         keyboardType: TextInputType.phone,
-                        decoration: getDecoration('  input code', '', 'Code', '', Icons.unsubscribe_outlined),  //(' input phone', Icons.code_outlined,),
+                        decoration: getDecoration('  input code', '', 'Code', '', Icons.unsubscribe_outlined),
                       ),
                     ),
                     Container(
@@ -72,7 +72,6 @@ class CodeWidgetState extends BaseSharedControlledState<CodeWidget, LoginControl
                           if(controller.controllerCode.text == "" || controller.controllerCode.text.isEmpty) {
                             _showDialog();
                           } else {
-                            print("uuuuuuuuuuuuu");
                             controller.verifyCode(controller.controllerCode.text);
                           }
                         },

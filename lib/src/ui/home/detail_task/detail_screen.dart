@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_example/src/core/ui/states/base_statefull_screen.dart';
 import 'package:flutter_app_example/src/core/ui/widgets/base_stateful_widget.dart';
-import 'package:flutter_app_example/src/ui/addition/detail_task/detail_controller.dart';
+import 'package:flutter_app_example/src/ui/home/detail_task/detail_controller.dart';
 import 'package:flutter_app_example/src/ui/utils/utils.dart';
 import 'package:get/get.dart';
 

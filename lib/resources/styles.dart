@@ -57,10 +57,11 @@ InputDecoration getDecoration(
       border: const OutlineInputBorder(borderSide: const BorderSide(color: colorAccent)),
       hintText: hintText, // 'input Phone'
       hintStyle: const TextStyle(color: hintStyleTextField),
-      helperText: helperText, // '+38...',
+//      helperText: helperText, // '+38...',
       labelText: labelText, // 'Phone',
       labelStyle: const TextStyle(color: colorBlackText),
       prefixIcon: Icon(iconData, color: colorAccent),
       prefixText: prefixText, // '№ ',
       prefixStyle: const TextStyle(color: colorAccent));
 }
+

@@ -4,9 +4,10 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_app_example/resources/colors.dart';
 import 'package:flutter_app_example/src/core/ui/states/base_statefull_screen.dart';
 import 'package:flutter_app_example/src/core/ui/widgets/base_stateful_widget.dart';
-import 'package:flutter_app_example/src/ui/addition/detail_task/detail_screen.dart';
 import 'package:flutter_app_example/src/ui/home/home_controller.dart';
 import 'package:get/get.dart';
+
+import 'detail_task/detail_screen.dart';
 
 class HomeScreen extends BaseStatefulWidget {
   @override
@@ -26,12 +27,14 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
         AppBar(
           backgroundColor: const Color(0xFFffffb3),
           actions: [
-            IconButton(
-              icon: new Icon(Icons.delete),
-              onPressed: () {
-                _showDialog();
-              },
-            )
+            ObxValue(
+                (RxList list) => IconButton(
+                      icon: list.isNotEmpty ? Icon(Icons.delete) : SizedBox(),
+                      onPressed: () {
+                        _showDialog();
+                      },
+                    ),
+                controller.list)
           ],
           title: Center(
               child: Text("Task list",
@@ -71,9 +74,7 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
                                                 onPrimary: Colors.black),
                                             onPressed: () {
                                               ///   удалить с Firebase
-                                              controller
-                                                  .deleteTask(list[index]);
-
+                                              controller.deleteTask(list[index]);
                                               ///   удалить c экрана
                                               list.removeAt(index);
                                               Get.back();
@@ -175,4 +176,3 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
 
 }
 
-/// ===== разбивка на части ==== OPTION + COMMAND + M

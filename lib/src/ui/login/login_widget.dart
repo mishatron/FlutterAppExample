@@ -64,7 +64,7 @@ class LoginWidgetState extends BaseSharedControlledState<LoginWidget, LoginContr
                       focusNode: controller.phoneFocus,
                       keyboardType: TextInputType.phone,
                       decoration: getDecoration('  input phone', '+38...', 'Phone', '№ ', Icons.phone,
-                      ), //(' input phone', Icons.phone),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10.0),
@@ -81,7 +81,7 @@ class LoginWidgetState extends BaseSharedControlledState<LoginWidget, LoginContr
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: colorAccent, // background
+                          primary: colorAccent,
                         ),
                         label: Text("Login",
                             style: TextStyle(
@@ -109,20 +109,16 @@ class LoginWidgetState extends BaseSharedControlledState<LoginWidget, LoginContr
       actions: <Widget>[
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: colorAccent, // background
-            onPrimary: Colors.black, // foreground
+            primary: colorAccent,
+            onPrimary: Colors.black,
           ),
           onPressed: () {Get.back();},
-          child: Text("Close"), // cancel, //
+          child: Text("Close"),
         ),
       ],
     ));
   }
 
-// @override
-// LoginController getController() {
-//   // TODO: implement getController
-//   throw UnimplementedError();
-// }
+
 
 }
