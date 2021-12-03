@@ -29,7 +29,7 @@ class ProfileScreenState
     return controller.contentProgress
         ? const Offstage()
         : ListView(
-            padding: EdgeInsets.all(0.0),
+            padding: const EdgeInsets.all(0.0),
             shrinkWrap: true,
             children: <Widget>[
                 Obx(
@@ -44,7 +44,7 @@ class ProfileScreenState
                       ),
                       const SizedBox(height: 20.0),
                       Container(
-                        padding: EdgeInsets.only(left: 10, right: 10),
+                        padding: const EdgeInsets.only(left: 10, right: 10),
                         child: TextField(
                           enabled: false,
                           onChanged: (text) {},
@@ -59,7 +59,7 @@ class ProfileScreenState
                       ),
                       const SizedBox(height: 20.0),
                       Container(
-                        padding: EdgeInsets.only(left: 10, right: 10),
+                        padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
@@ -86,7 +86,7 @@ class ProfileScreenState
                               onPressed: () {
                                 controller.setDataUserParameters();
                               },
-                              child: Text("Save"),
+                              child: const Text("Save"),
                             ),
                             // : Offstage(),
                           ],
@@ -120,7 +120,7 @@ class ProfileScreenState
                               onPressed: () {
                                 controller.setDataUserParameters();
                               },
-                              child: Text("Save"),
+                              child: const Text("Save"),
                             ),
                           ],
                         ),
@@ -153,24 +153,24 @@ class ProfileScreenState
                               onPressed: () {
                                 controller.setDataUserParameters();
                               },
-                              child: Text("Save"),
+                              child: const Text("Save"),
                             ),
                           ],
                         ),
                       ),
                       const SizedBox(height: 15.0),
                       Container(
-                        padding: EdgeInsets.only(left: 10, right: 10),
+                        padding: const EdgeInsets.only(left: 10, right: 10),
                         child: ElevatedButton.icon(
                           onPressed: (){
                             _showDialog();
                           },
-                          label: Text("Logout"),
-                          icon: Icon(Icons.logout),
+                          label: const Text("Logout"),
+                          icon: const Icon(Icons.logout),
                           style: ElevatedButton.styleFrom(
                             primary: colorAccent,
                             onPrimary: Colors.black,
-                            minimumSize: Size.fromHeight(58),
+                            minimumSize: const Size.fromHeight(58),
                           ),
                         )
                       ),
@@ -194,8 +194,8 @@ class ProfileScreenState
   void _showDialog() {
     Get.dialog(AlertDialog(
       backgroundColor: colorPrimaryDark,
-      title: new Text("Logout"),
-      content: new Text("are you sure you want to exit the application?"),
+      title: const Text("Logout"),
+      content: const Text("are you sure you want to exit the application?"),
       actions: <Widget>[
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -205,7 +205,7 @@ class ProfileScreenState
           onPressed: () {
             Get.back();
           },
-          child: Text("Close"),
+          child: const Text("Close"),
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -215,7 +215,7 @@ class ProfileScreenState
           onPressed: () {
             controller.logout();
           },
-          child: Text("ok"),
+          child: const Text("ok"),
         ),
       ],
     ));

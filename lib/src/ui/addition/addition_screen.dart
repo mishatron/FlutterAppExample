@@ -44,7 +44,7 @@ class AdditionScreenState
                   filled: true,
                   isCollapsed: true,
                   contentPadding:
-                      EdgeInsets.only(top: 10.0, left: 8.0, right: 8.0),
+                  const EdgeInsets.only(top: 10.0, left: 8.0, right: 8.0),
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: colorAccent, width: 2.0)),
                   enabledBorder: OutlineInputBorder(
@@ -54,7 +54,7 @@ class AdditionScreenState
           ),
           Container(
             height: 58.0,
-            padding: EdgeInsets.only(top: 10.0, left: 8.0, right: 8.0),
+            padding: const EdgeInsets.only(top: 10.0, left: 8.0, right: 8.0),
             child: ElevatedButton.icon(
               onPressed: () {
                 if (controller.controllerTextTask.text.isNotEmpty) {
@@ -90,8 +90,8 @@ class AdditionScreenState
   void _showDialog() {
     Get.dialog(AlertDialog(
       backgroundColor: colorPrimaryDark,
-      title: new Text("Task"),
-      content: new Text("To save, first enter the task"),
+      title: const Text("Task"),
+      content: const Text("To save, first enter the task"),
       actions: <Widget>[
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -101,7 +101,7 @@ class AdditionScreenState
           onPressed: () {
             Get.back();
           },
-          child: Text("Close"), // cancel, //
+          child: const Text("Close"), // cancel, //
         ),
       ],
     ));

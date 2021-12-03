@@ -64,7 +64,7 @@ class CodeWidgetState extends BaseSharedControlledState<CodeWidget, LoginControl
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: 10, right: 10),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       width: double.infinity,
                       height: 55.0,
                       child: ElevatedButton.icon(
@@ -76,7 +76,7 @@ class CodeWidgetState extends BaseSharedControlledState<CodeWidget, LoginControl
                           }
                         },
                         style: ElevatedButton.styleFrom(primary: colorAccent),
-                        label: Text("Verify", style: TextStyle(fontSize: 22.0, color: Colors.black)),
+                        label: const Text("Verify", style: TextStyle(fontSize: 22.0, color: Colors.black)),
                         icon: const Icon(Icons.login, color: Colors.black, size: 34.0,),
                       ),
                     ),
@@ -92,8 +92,8 @@ class CodeWidgetState extends BaseSharedControlledState<CodeWidget, LoginControl
   void _showDialog() {
     Get.dialog(AlertDialog(
       backgroundColor: colorPrimaryDark,
-      title: new Text("Registered"),
-      content: new Text("Input number code"),
+      title: const Text("Registered"),
+      content: const Text("Input number code"),
       actions: <Widget>[
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -101,7 +101,7 @@ class CodeWidgetState extends BaseSharedControlledState<CodeWidget, LoginControl
             onPrimary: Colors.black, // foreground
           ),
           onPressed: () {Get.back();},
-          child: Text("Close"), // cancel, //
+          child: const Text("Close"), // cancel, //
         ),
       ],
     ));

@@ -51,7 +51,7 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
                             return Dismissible(
                               key: Key(list[index].task),
                               background: Container(
-                                padding: EdgeInsets.only(right: 15.0),
+                                padding: const EdgeInsets.only(right: 15.0),
                                 alignment: AlignmentDirectional.centerEnd,
                                 color: Colors.orange,
                                 child: const Icon(Icons.delete,
@@ -113,8 +113,8 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
                                 closedBuilder: (BuildContext _,
                                     VoidCallback openContainer) {
                                   return ListTile(
-                                    leading: Icon(Icons.date_range),
-                                    trailing: Icon(Icons.visibility_outlined),
+                                    leading: const Icon(Icons.date_range),
+                                    trailing: const Icon(Icons.visibility_outlined),
                                     title: Text(list[index].task,
                                         maxLines: 1,
                                         softWrap: false,
@@ -139,8 +139,8 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
   void _showDialog() {
     Get.dialog(AlertDialog(
       backgroundColor: colorPrimaryDark,
-      title: new Text("Delete list"),
-      content: new Text("clear the whole list?"),
+      title: const Text("Delete list"),
+      content: const Text("clear the whole list?"),
       actions: <Widget>[
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -152,7 +152,7 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
             controller.deleteListTask();
             Get.back();
           },
-          child: Text("Delete"), // cancel, //
+          child: const Text("Delete"), // cancel, //
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -162,7 +162,7 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
           onPressed: () {
             Get.back();
           },
-          child: Text("Close"), // cancel, //
+          child: const Text("Close"), // cancel, //
         ),
       ],
     ));

@@ -37,7 +37,7 @@ class MainScreenState extends BaseStatefulScreen<MainScreen, MainController> {
           onPressed: () {
             Get.to(AdditionScreen());
           },
-          child: Icon(
+          child: const Icon(
             Icons.add,
             color: Colors.black,
           ),
