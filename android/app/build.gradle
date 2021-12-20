@@ -43,7 +43,7 @@ android {
         multiDexEnabled true
     }
     signingConfigs {
-        releaseMishatronic {
+        release {
             keyAlias 'mishatronic'
             keyPassword 'mishatronic'
             storeFile file('mishatronic.jks')
@@ -54,26 +54,13 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-//            signingConfig signingConfigs.debug
             minifyEnabled true
             useProguard true
-
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            signingConfig signingConfigs.releaseMishatronic
-        }
-    }
-
-    flavorDimensions "flavor-type"
-
-    productFlavors {
-        mishatronic {
-            dimension "flavor-type"
-            applicationId "com.mishatronic.flutter_app_example.flutter_app_example"
-            signingConfig signingConfigs.releaseMishatronic
+            signingConfig signingConfigs.release
         }
     }
 }
