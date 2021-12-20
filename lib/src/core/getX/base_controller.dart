@@ -57,37 +57,37 @@ abstract class BaseController extends GetxController with ShowMessageMixin {
   }
 
   @protected
-  void handleError(Object err) {
+  void handleError(Object err, StackTrace stackTrace) {
     if (_contentProgress) hideContentProgress();
     if (_globalProgress) hideProgress();
     _isError(true);
-    _onError(err);
+    _onError(err, stackTrace);
   }
 
-  void _onError(dynamic e) {
+  void _onError(dynamic e, StackTrace stackTrace) {
     if (e == null) return;
     if (e is ValidationException) {
       showMessageRes(e.stringResource);
     } else if (e is UnauthorizedException) {
       Get.offAllNamed(loginRoute);
-      LogService().log(e);
+      LogService().log(e, stackTrace);
     } else if (e is ForbiddenException) {
       showMessage(e.msg);
-      LogService().log(e);
+      LogService().log(e, stackTrace);
     } else if (e is NotFoundException) {
       showMessage(e.msg);
-      LogService().log(e);
+      LogService().log(e, stackTrace);
     } else if (e is BadRequestException) {
       showMessage(e.msg);
-      LogService().log(e);
+      LogService().log(e, stackTrace);
     } else if (e is InternalServerErrorException) {
       showMessage(e.msg);
-      LogService().log(e);
+      LogService().log(e, stackTrace);
     } else if (e is SocketException || e is ConnectionTimeoutException) {
       showMessageRes(noInternetError);
     } else {
       showMessageRes(unexpectedError);
-      LogService().log(e);
+      LogService().log(e, stackTrace);
     }
   }
 

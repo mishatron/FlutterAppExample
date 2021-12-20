@@ -42,3 +42,26 @@ TextStyle? getAppBarTheme(BuildContext context) {
 TextStyle getWhite16() {
   return const TextStyle(color: colorWhiteText, fontSize: 16);
 }
+TextStyle getBlack16() {
+  return const TextStyle(color: colorBlackText, fontSize: 16);
+}
+TextStyle getBlack22() {
+  return const TextStyle(color: colorBlackText, fontSize: 22);
+}
+
+InputDecoration getDecoration(
+    String hintText, String helperText, String labelText, String prefixText, IconData iconData) {
+
+  return InputDecoration(
+      focusedBorder: const OutlineInputBorder(borderSide: const BorderSide(color: colorAccent)),
+      border: const OutlineInputBorder(borderSide: const BorderSide(color: colorAccent)),
+      hintText: hintText, // 'input Phone'
+      hintStyle: const TextStyle(color: hintStyleTextField),
+//      helperText: helperText, // '+38...',
+      labelText: labelText, // 'Phone',
+      labelStyle: const TextStyle(color: colorBlackText),
+      prefixIcon: Icon(iconData, color: colorAccent),
+      prefixText: prefixText, // '№ ',
+      prefixStyle: const TextStyle(color: colorAccent));
+}
+

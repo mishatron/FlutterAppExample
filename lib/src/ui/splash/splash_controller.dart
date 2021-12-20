@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_app_example/router/route_paths.dart';
 import 'package:flutter_app_example/src/ui/splash/splash_timer_mixin.dart';
 import 'package:flutter_app_example/src/utils/async/future_chain.dart';
@@ -11,10 +12,10 @@ class SplashController extends BaseController with SplashTimerMixin {
       data: [
         _getUserIsLoggedIn,
       ],
-      onError: (index, err) {
-        handleError(err);
+      onError: (index, err, stackTrace) {
+        handleError(err, stackTrace);
       });
-  RxString version = "".obs;
+  final RxString version = "".obs;
 
   @override
   void onInit() {
@@ -29,6 +30,11 @@ class SplashController extends BaseController with SplashTimerMixin {
   }
 
   Future<void> _getUserIsLoggedIn() async {
-    nextRoute = loginRoute;
+    if (FirebaseAuth.instance.currentUser == null) {
+      nextRoute = loginRoute;
+    } else {
+      nextRoute = mainScreenRoute;
+    }
+
   }
 }

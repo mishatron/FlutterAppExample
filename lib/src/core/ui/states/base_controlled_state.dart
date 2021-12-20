@@ -26,7 +26,10 @@ abstract class BaseControlledState<B extends BaseStatefulWidget,
       builder: (context) {
         if (controller.globalProgress) {
           return Stack(
-            children: <Widget>[getLayout(), getProgress()],
+            children: <Widget>[
+              getLayout(),
+              getProgress(),
+            ],
           );
         }
         return getLayout();
@@ -36,7 +39,6 @@ abstract class BaseControlledState<B extends BaseStatefulWidget,
 
   @override
   void dispose() {
-    controller.dispose();
     Get.delete<C>(tag: tag);
     super.dispose();
   }
