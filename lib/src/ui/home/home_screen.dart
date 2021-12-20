@@ -29,22 +29,22 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
           actions: [
             ObxValue(
                 (RxList list) => IconButton(
-                      icon: list.isNotEmpty ? Icon(Icons.delete) : SizedBox(),
+                      icon: list.isNotEmpty ? const Icon(Icons.delete, color: colorAccent,) : const Offstage(),
                       onPressed: () {
                         _showDialog();
                       },
                     ),
                 controller.list)
           ],
-          title: Center(
-              child: Text("Task list",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.brown, fontSize: 18.0))),
+          centerTitle: true,
+          title: Text("Task list",
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.brown, fontSize: 18.0)),
         ),
         ObxValue(
             (RxList list) => Expanded(
                   child: list.isEmpty
-                      ? Center(child: Text("Your list is empty"))
+                      ? Center(child: const Text("Your list is empty"))
                       : ListView.separated(
                           shrinkWrap: true,
                           itemBuilder: (context, index) {

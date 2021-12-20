@@ -1,10 +1,10 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_example/models/user_model.dart';
 import 'package:flutter_app_example/router/route_paths.dart';
 import 'package:flutter_app_example/src/core/getX/base_controller.dart';
 import 'package:flutter_app_example/src/data/repositories/user/user_repository.dart';
+import 'package:flutter_app_example/src/domain/models/user_model.dart';
 import 'package:get/get.dart';
 
 class ProfileController extends BaseController {
@@ -17,8 +17,8 @@ class ProfileController extends BaseController {
   String lastName = "";
   String email = "";
 
-  UserRepository repository = Get.find();
-  Rx<UserModel> _user = UserModel().obs;
+  final UserRepository repository = Get.find();
+  final Rx<UserModel> _user = UserModel().obs;
 
   UserModel get user => _user.value;
 
@@ -53,8 +53,8 @@ class ProfileController extends BaseController {
       await FirebaseAuth.instance.signOut();
       Get.offAllNamed(rootRoute);
       hideProgress();
-    } catch (err) {
-      handleError(err);
+    } catch (err, stackTrace) {
+      handleError(err, stackTrace);
     }
   }
 

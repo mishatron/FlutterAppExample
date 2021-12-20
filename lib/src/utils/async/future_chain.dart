@@ -5,7 +5,7 @@ import 'package:flutter_app_example/src/utils/async/retry_future.dart';
 class FutureChainT<T> {
   List<Future<T> Function()>? data;
   final Function(int)? onOneCompleted;
-  final Function(int, dynamic)? onError;
+  final Function(int, dynamic, StackTrace)? onError;
   int _curIndex = 0;
   bool _isRunning = false;
   final Duration? timeout;
@@ -34,10 +34,10 @@ class FutureChainT<T> {
           onOneCompleted!(_curIndex);
         }
         ++_curIndex;
-      } catch (err) {
+      } catch (err, stackTrace) {
         _isRunning = false;
         if (onError != null) {
-          onError!(_curIndex, err);
+          onError!(_curIndex, err, stackTrace);
           break;
         }
       }
@@ -50,7 +50,7 @@ class FutureChain extends FutureChainT<void> {
   FutureChain(
       {List<FutureVoidCallback>? data,
       Function(int)? onOneCompleted,
-      Function(int, dynamic)? onError,
+      Function(int, dynamic, StackTrace)? onError,
       Duration? timeout})
       : super(
             data: data,

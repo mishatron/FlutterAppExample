@@ -28,7 +28,7 @@ class SplashScreenState
 
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
     );
     animation = CurvedAnimation(
       parent: animationController!,
@@ -48,12 +48,10 @@ class SplashScreenState
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Expanded(
-                  child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 100),
-                      child: ScaleTransition(
-                          scale: animation,
-                          child: FlutterLogo(size: 256,)
-                      )),
+                  child: ScaleTransition(
+                      scale: animation,
+                      child: FlutterLogo(size: MediaQuery.of(context).size.width/2,)
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),

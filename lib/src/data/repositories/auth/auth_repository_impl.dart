@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_app_example/models/user_model.dart';
 import 'package:flutter_app_example/src/data/repositories/auth/auth_repository.dart';
+import 'package:flutter_app_example/src/domain/models/user_model.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
-  /// ====== создание uid юзера при реестрации по номеру тлф ===
+  final firestoreUserData = FirebaseFirestore.instance.collection('userData');
+
   @override
   Future<void> createUser(User user) async {
     firestoreUserData.doc(user.uid).set(UserModel(

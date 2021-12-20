@@ -1,5 +1,5 @@
-import 'package:flutter_app_example/models/user_model.dart';
 import 'package:flutter_app_example/src/core/data/base_repository.dart';
+import 'package:flutter_app_example/src/domain/models/user_model.dart';
 
 abstract class UserRepository extends BaseRepository {
 

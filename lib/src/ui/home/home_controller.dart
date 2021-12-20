@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_app_example/models/task_model.dart';
+import 'package:flutter_app_example/src/domain/models/task_model.dart';
 import 'package:flutter_app_example/src/core/getX/base_controller.dart';
 import 'package:flutter_app_example/src/data/repositories/task/task_repository.dart';
 import 'package:get/get.dart';

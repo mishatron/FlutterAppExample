@@ -1,28 +1,25 @@
-import 'package:flutter_app_example/models/user_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_app_example/src/data/repositories/user/user_repository.dart';
+import 'package:flutter_app_example/src/domain/models/user_model.dart';
 
 class UserRepositoryImpl extends UserRepository {
+  final firestoreUserData = FirebaseFirestore.instance.collection('userData');
 
-  /// === c фичей стримом показ данных юзера
   @override
-  Future<UserModel> getUserData() async => await firestoreUserData
-      .doc(uid)
+  Future<UserModel> getUserData() => firestoreUserData
+      .doc(FirebaseAuth.instance.currentUser!.uid)
       .get()
-      .then((data) => UserModel.fromJson(data.data()));
+      .then((data) => UserModel.fromJson(data.data())..id = data.id);
 
-  /// === cо стримом показ данных юзера
   @override
   Stream<UserModel> streamUserData() => firestoreUserData
-      .doc(uid)
+      .doc(FirebaseAuth.instance.currentUser!.uid)
       .snapshots()
-      .map((data) => UserModel.fromJson(data));
+      .map((data) => UserModel.fromJson(data)..id = data.id);
 
-  /// === c фичей обновление данных юзера
   @override
   Future<void> updateUser(UserModel user) async {
-    firestoreUserData.doc(uid).set(user.toJson());
+    firestoreUserData.doc(FirebaseAuth.instance.currentUser!.uid).set(user.toJson());
   }
-
-
-
 }

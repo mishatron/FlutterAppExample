@@ -6,6 +6,8 @@ import 'package:flutter_app_example/src/data/repositories/auth/auth_repository.d
 import 'package:get/get.dart';
 
 class LoginController extends BaseController {
+  final AuthRepository _authRepository = Get.find();
+
   final TextEditingController _controllerPhone = TextEditingController();
   TextEditingController get controllerPhone => _controllerPhone;
   final TextEditingController _controllerCode = TextEditingController();
@@ -43,16 +45,21 @@ class LoginController extends BaseController {
   }
 
   void verifyCode(String code) async {
-    codeFocus.unfocus();
-    showProgress();
-    var credential = await auth.signInWithCredential(
-        PhoneAuthProvider.credential(
-            verificationId: this.verificationId, smsCode: code));
-    if (credential.user != null) {
-      await AuthRepository.to.createUser(credential.user!);
-      Get.offAllNamed(mainScreenRoute);
+    try {
+      codeFocus.unfocus();
+      showProgress();
+      var credential = await auth.signInWithCredential(
+          PhoneAuthProvider.credential(
+              verificationId: this.verificationId, smsCode: code));
+      if (credential.user != null) {
+        await _authRepository.createUser(credential.user!);
+        Get.offAllNamed(mainScreenRoute);
+      }
+      hideProgress();
     }
-    hideProgress();
+    catch(err, stackTrace){
+      handleError(err, stackTrace);
+    }
   }
 
 

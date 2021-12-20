@@ -12,10 +12,10 @@ class SplashController extends BaseController with SplashTimerMixin {
       data: [
         _getUserIsLoggedIn,
       ],
-      onError: (index, err) {
-        handleError(err);
+      onError: (index, err, stackTrace) {
+        handleError(err, stackTrace);
       });
-  RxString version = "".obs;
+  final RxString version = "".obs;
 
   @override
   void onInit() {
