@@ -1,6 +1,5 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_app_example/resources/colors.dart';
 import 'package:flutter_app_example/src/core/ui/states/base_statefull_screen.dart';
 import 'package:flutter_app_example/src/core/ui/widgets/base_stateful_widget.dart';
@@ -29,7 +28,12 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
           actions: [
             ObxValue(
                 (RxList list) => IconButton(
-                      icon: list.isNotEmpty ? const Icon(Icons.delete, color: colorAccent,) : const Offstage(),
+                      icon: list.isNotEmpty
+                          ? const Icon(
+                              Icons.delete,
+                              color: colorAccent,
+                            )
+                          : const Offstage(),
                       onPressed: () {
                         _showDialog();
                       },
@@ -74,7 +78,9 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
                                                 onPrimary: Colors.black),
                                             onPressed: () {
                                               ///   удалить с Firebase
-                                              controller.deleteTask(list[index]);
+                                              controller
+                                                  .deleteTask(list[index]);
+
                                               ///   удалить c экрана
                                               list.removeAt(index);
                                               Get.back();
@@ -103,7 +109,7 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
                                 closedElevation: 0.0,
                                 openElevation: 4.0,
                                 transitionDuration:
-                                    const Duration(milliseconds: 1500),
+                                    const Duration(milliseconds: 500),
                                 openBuilder:
                                     (BuildContext context, VoidCallback _) =>
                                         DetailScreen(
@@ -114,7 +120,8 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
                                     VoidCallback openContainer) {
                                   return ListTile(
                                     leading: const Icon(Icons.date_range),
-                                    trailing: const Icon(Icons.visibility_outlined),
+                                    trailing:
+                                        const Icon(Icons.visibility_outlined),
                                     title: Text(list[index].task,
                                         maxLines: 1,
                                         softWrap: false,
@@ -171,8 +178,5 @@ class HomeScreenState extends BaseStatefulScreen<HomeScreen, HomeController> {
   @override
   PreferredSizeWidget? buildAppbar() {
     return null;
-    // return getAppBar(context, "HomeScreen", leading: getBack());
   }
-
 }
-
